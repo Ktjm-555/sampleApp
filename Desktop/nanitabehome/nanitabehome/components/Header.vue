@@ -11,7 +11,7 @@
                     <button class="button is-rounded other_btn">デザート</button>
                     <button class="button is-rounded other_btn">パスタ</button>
                     <button class="button is-rounded other_btn">豚肉</button>
-                </div>        
+                </div>    
             </div>
         </div>
     </header>

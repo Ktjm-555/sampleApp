@@ -194,48 +194,47 @@ export default {
 <template>
 <div id="page" >
     <Header></Header>
-    <main>
-        <div class="main_wrap">
-            <article class="box media">
-                <h2 class="main_title">ルーレットで決める</h2>
-                <div class="click_container">
-                    <div class="select is-warning">
-                        <select v-model="country">
-                            <option value="not">選択してください</option>
-                            <option value="not">--- 国 ---</option>
-                            <option value="american">アメリカ</option>
-                            <option value="japanese">日本</option>
-                            <option value="chinese">中国</option>
-                            <option value="french">フランス</option>
-                            <option value="not">--- 素材 ---</option>
-                            <option value="chicken">鶏肉</option>
-                            <option value="beef">牛肉</option>
-                            <option value="seafood">魚介</option>
-                            <option value="vegetarian">野菜</option>
-                        </select>
-                    </div>                    
+	<Main>
+		<article class="box media">
+			<h2 class="main_title">ルーレットで決める</h2>
+			<div class="click_container">
+				<div class="select is-warning">
+					<select v-model="country">s
+						<option value="not">選択してください</option>
+						<option value="not">--- 国 ---</option>
+						<option value="american">アメリカ</option>
+						<option value="japanese">日本</option>
+						<option value="chinese">中国</option>
+						<option value="french">フランス</option>
+						<option value="not">--- 素材 ---</option>
+						<option value="chicken">鶏肉</option>
+						<option value="beef">牛肉</option>
+						<option value="seafood">魚介</option>
+						<option value="vegetarian">野菜</option>
+					</select>
+				</div>                    
 
-                    <button class="button is-warning is-rounded is-medium is-responsive inline_btn" v-if="status !== 'start'" @click="set()">セット</button>
-                    <button class="button is-warning is-rounded is-medium is-responsive" v-if="status !== 'start'" @click="start()">スタート</button>
-                    <button class="button is-warning is-rounded is-medium is-responsive" v-else @click="stop()">ストップ</button>
-                    
-                </div>
-                
-                <div class="roulette_cover roulette_on" v-if="displayRoulette">
-                    <div class="target" :class="{color_blue : rouletteRecipe[0].colorStatus}">{{ rouletteRecipe[0].strMeal }}</div>
-                    <div class="target" :class="{color_red : rouletteRecipe[1].colorStatus}">{{ rouletteRecipe[1].strMeal }}</div>
-                    <div class="target" :class="{color_green : rouletteRecipe[2].colorStatus}">{{ rouletteRecipe[2].strMeal }}</div>
-                    <div class="target" :class="{color_yellow : rouletteRecipe[3].colorStatus}">{{ rouletteRecipe[3].strMeal }}</div>
-                </div>
+				<button class="button is-warning is-rounded is-medium is-responsive inline_btn" v-if="status !== 'start'" @click="set()">セット</button>
+				<button class="button is-warning is-rounded is-medium is-responsive" v-if="status !== 'start'" @click="start()">スタート</button>
+				<button class="button is-warning is-rounded is-medium is-responsive" v-else @click="stop()">ストップ</button>
+				
+			</div>
+			
+			<div class="roulette_cover roulette_on" v-if="displayRoulette">
+				<div class="target" :class="{color_blue : rouletteRecipe[0].colorStatus}">{{ rouletteRecipe[0].strMeal }}</div>
+				<div class="target" :class="{color_red : rouletteRecipe[1].colorStatus}">{{ rouletteRecipe[1].strMeal }}</div>
+				<div class="target" :class="{color_green : rouletteRecipe[2].colorStatus}">{{ rouletteRecipe[2].strMeal }}</div>
+				<div class="target" :class="{color_yellow : rouletteRecipe[3].colorStatus}">{{ rouletteRecipe[3].strMeal }}</div>
+			</div>
 
-                <div class="roulette_cover roulette_on" v-else="displayRoulette">
-                    <div class="target"></div>
-                    <div class="target"></div>
-                    <div class="target"></div>
-                    <div class="target"></div>
-                </div>
+			<div class="roulette_cover roulette_on" v-else="displayRoulette">
+				<div class="target"></div>
+				<div class="target"></div>
+				<div class="target"></div>
+				<div class="target"></div>
+			</div>
   
-            </article>
+		</article>
 
             <Side
                 :recipeRankingList = "recipeRanking" 
@@ -248,8 +247,8 @@ export default {
                 :todayRecipeImg="todayRecipe.img"
                 @closeResModal="closeResModal" 
             ></Modal>
-        </div>
-    </main>
+	</Main>
+    
     <Footer></Footer>          
 </div>
         
@@ -273,127 +272,6 @@ overflow: hidden
     
 }
 
-main {
-    width: 100%;
-    background-color: #FCF4EC;
-
-    .main_wrap {
-        margin-right: auto;
-        margin-left: auto;
-        max-width: 925px;
-        display: flex;
-
-
-        .media {
-            margin-top: 20px;
-            width: 620px;
-            display: block;
-
-        .main_title {
-            text-align: center;
-            margin-bottom: 15px;
-        }
-        
-        .click_container {
-            display: flex;
-            justify-content: space-between;  
-            margin-bottom: 20px;
-
-
-            .btn_container {
-                display: flex;
-            }
-        }
-
-            .roulette_cover {
-                background-color: #FF8A02;
-                width: 450px;
-                height: 450px;
-                border-radius: 50%;
-                margin: auto;
-                position: relative;
-                
-
-                .target {
-                    display: flex;
-                    align-items: center;
-                    width: 225px;
-                    height: 225px;
-                    text-align: center;
-
-                    &:first-child {
-                        position: absolute;
-                        top: 0px;
-                        right: 0px;
-                        border-radius: 0 100% 0 0;
-                        padding-left: 10px;
-                        border: solid 0.5em blue;
-                        background-color: #bbdbf3;
-
-                        &:not(.color_blue) {
-                            border: none;
-                            background-color: #bbdbf3;
-                        }
-                    }
-
-                    &:nth-child(2) {
-                        position: absolute;
-                        bottom: 0px;
-                        right: 0px;
-                        border-radius: 0 0 100% 0;
-                        padding-left: 15px;
-                        border: solid 0.5em red;
-                        background-color: #e3acae;
-
-                        &:not(.color_red) {
-                            border: none;
-                            background-color: #e3acae;
-                        }
-                    }
-
-                    &:nth-child(3) {
-                        position: absolute;
-                        bottom: 0px;
-                        left: 0px;
-                        border-radius: 0 0 0 100%;
-                        border: solid 0.5em green;
-                        background-color: #a3d6ce;
-
-                        &:not(.color_green) {
-                            border: none;
-                            background-color: #a3d6ce;
-                        }
-                    }
-
-                    &:last-child {
-                        position: absolute;
-                        top: 0px;
-                        left: 0px;
-                        border-radius: 100% 0 0 0;
-                        border: solid 0.5em yellow;
-                        background-color: #ffedab;
-
-                        &:not(.color_yellow) {
-                            border: none;
-                            background-color: #ffedab;
-                            
-                        }
-                    }
-
-                }
-            }
-
-            .button {
-                display: block;
-            }
-
-        }  
-
-        .box {
-            padding: 20px;
-        }
-
-    }
 
     .modal {
         animation-name: fade;
@@ -424,7 +302,7 @@ main {
     }
    
     
-}
+
 
 
 @media screen and (max-width: 1400px) {

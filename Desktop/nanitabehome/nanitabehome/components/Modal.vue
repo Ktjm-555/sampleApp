@@ -1,3 +1,14 @@
+<script>
+export default {
+    props: {
+        isActive: Boolean,
+        todayRecipeTitle: String,
+        todayRecipeUrl: String,
+        todayRecipeImg: String,
+
+    }
+}
+</script>
 <template>
     <div class="modal" :class="{'is-active' : isActive}">
     <div class="modal-background"></div>
@@ -21,14 +32,3 @@
     </div>
 
 </template>
-<script>
-export default {
-    props: {
-        isActive: Boolean,
-        todayRecipeTitle: String,
-        todayRecipeUrl: String,
-        todayRecipeImg: String,
-
-    }
-}
-</script>
