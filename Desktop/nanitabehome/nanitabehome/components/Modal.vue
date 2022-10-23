@@ -15,7 +15,7 @@ export default {
     <div class="modal-card">
         <header class="modal-card-head">
         <p class="modal-card-title">🍴本日はこれ食べる🍚</p>
-        <button class="delete" aria-label="close" @click="$emit('closeResModal')"></button>
+        <button class="delete" aria-label="close" @click="$emit('closeResModal'); $emit('clickOk')"></button>
         </header>
         <section class="modal-card-body">
         <div class="content">
@@ -26,7 +26,7 @@ export default {
         </div>
         </section>
         <footer class="modal-card-foot">
-        <button class="button is-warning is-rounded"  @click="$emit('closeResModal')">閉じる</button>
+        <button class="button is-warning is-rounded"  @click="$emit('closeResModal'); $emit('clickOk')">閉じる</button>
         </footer>
     </div>
     </div>

@@ -46,6 +46,8 @@ export default {
                 recipeId: null,
                 img: null
             },
+			clickNone: true,
+			SecondclickNone: false,
         }
     },
 
@@ -54,7 +56,12 @@ export default {
 
         // ルーレットを回す。
         start() {
-            this.status = 'start';
+
+			if(this.clickNone) {
+				alert('国名かカテゴリーをセットしてね')
+
+			} else {
+			this.status = 'start';
             let attentionIndex = 0
             
             //　ルーレットの途中でスタートボタンが押されたら、初めから回し始める。
@@ -79,38 +86,51 @@ export default {
                 
             }, 90)
 
+			}
+
+		    
         },
 
         // ルーレットセットする
         set() {
             this.displayRoulette = true;
-            this.rouletteRecipe = []
+			this.SecondclickNone = false;
+
+            this.rouletteRecipe  = []
 
             if (this.country === 'not') {
                 alert('国名か素材名を選択してください。')
 
-            } else if (this.country === 'american') {   
+            } else if (this.country === 'american') { 
+				this.clickNone = false;  
                 this.SetRouletteRecipe(this.recipeAmerican);
 
             } else if (this.country === 'japanese') {
+				this.clickNone = false;  
                 this.SetRouletteRecipe(this.recipeJapanese);
 
             } else if (this.country === 'chinese') {
+				this.clickNone = false;  
                 this.SetRouletteRecipe(this.recipeChinese);
 
             } else if (this.country === 'french') {
+				this.clickNone = false;  
                 this.SetRouletteRecipe(this.recipeFrench);
             
             } else if (this.country === 'chicken') {
+				this.clickNone = false;  
                 this.SetRouletteRecipe(this.recipeChicken);
             
             } else if (this.country === 'beef') {
+				this.clickNone = false;  
                 this.SetRouletteRecipe(this.recipeBeef);
             
             } else if (this.country === 'seafood') {
+				this.clickNone = false;  
                 this.SetRouletteRecipe(this.recipeSeafood);
             
             } else if (this.country === 'vegetarian') {
+				this.clickNone = false;  
                 this.SetRouletteRecipe(this.recipeVegetarian);
             
             }
@@ -120,8 +140,10 @@ export default {
 
         // ルーレットとめる
         stop() {
-            this.status = "stop"
+            this.status           = "stop"
             this.displayTodayMeal = true;
+			this.SecondclickNone  = true;
+
             clearInterval(this.intervalId);
 
             this.rouletteRecipe.forEach((e) => {
@@ -148,6 +170,10 @@ export default {
         closeResModal() {
             this.isActive = false;
         },
+
+		clickOk() {
+			this.SecondclickNone = false
+		},
 
 
 
@@ -215,7 +241,7 @@ export default {
 				</div>                    
 
 				<button class="button is-warning is-rounded is-medium is-responsive inline_btn" v-if="status !== 'start'" @click="set()">セット</button>
-				<button class="button is-warning is-rounded is-medium is-responsive" v-if="status !== 'start'" @click="start()">スタート</button>
+				<button class="button is-warning is-rounded is-medium is-responsive" v-if="status !== 'start'" :class="{click_none : clickNone, second_click_none : SecondclickNone}" @click="start()">スタート</button>
 				<button class="button is-warning is-rounded is-medium is-responsive" v-else @click="stop()">ストップ</button>
 				
 			</div>
@@ -245,7 +271,8 @@ export default {
                 :todayRecipeTitle="todayRecipe.recipeTitle"
                 :todayRecipeUrl="todayRecipe.recipeUrl"
                 :todayRecipeImg="todayRecipe.img"
-                @closeResModal="closeResModal" 
+                @closeResModal="closeResModal"
+				@clickOk="clickOk"
             ></Modal>
 	</Main>
     

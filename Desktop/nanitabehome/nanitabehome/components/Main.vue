@@ -38,6 +38,10 @@ main {
             }
         }
 
+		.second_click_none {
+			pointer-events: none;
+		}
+
             .roulette_cover {
                 background-color: #FF8A02;
                 width: 450px;
