@@ -12,7 +12,7 @@ export default {
             <article class="media">
                 <div class="media-left">
                     <figure class="image image_box is-64x64">
-                        <img :src="item.foodImageUrl" alt="Image">
+                        <img :src="item.foodImageUrl" alt="ランキングレシピの写真">
                     </figure>
                 </div>
                 <div class="media-content">
