@@ -12,7 +12,7 @@ export default {
             <article class="media">
                 <div class="media-left">
                     <figure class="image image_box is-64x64">
-                        <img :src="item.foodImageUrl" alt="ランキングレシピの写真">
+                        <img :src="item.foodImageUrl" alt="Image">
                     </figure>
                 </div>
                 <div class="media-content">
@@ -33,8 +33,10 @@ export default {
 </template>
 <style lang="scss">
 .side {
-    margin: 20px 0px auto 10px;
-    width: 300px;
+    // margin: 20px 0px 20px 30px;
+    margin: 20px;
+    width: 350px;
+    height: 675px;
 
     h2 {
         text-align: center;
@@ -46,11 +48,12 @@ export default {
             display: flex;
             width:fit-content;
             margin-top: 15px;
+            height: 100px;
+
 
 
             .media-left {
-                width: 60px;
-                height: 100px;
+                min-width: 60px;
 
                 .image_box {
                     display: flex;
@@ -76,32 +79,16 @@ export default {
     }
 }
 
+@media screen and ( max-width:479px ) {
+    .main_wrap {
 
-    .modal {
-        animation-name: fade;
-        animation-duration: 0.5s;
-
-        @keyframes fade {
-            0%{
-                opacity: 0;
-            }
-            100%{
-                opacity: 1;
-            }
+        .side {
+            box-sizing: border-box;
+            margin: 5px;
+            width: 99%;
+            height: 100%;
+            
         }
-
-        .modal-card {
-            text-align: center;
-
-
-        .modal_img {
-            width: 200px;
-            height: 200px;
-            object-fit: cover;
-            margin: 0 auto;
-            display: block;
-        }
-
     }
-    }
+}
 </style>
